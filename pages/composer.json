@@ -1,0 +1,17 @@
+{
+    "name": "rxv/voter-verification",
+    "description": "Verify user id cards",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Winnipass",
+            "email": "adams4lyf@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpoffice/phpspreadsheet": "dev-master",
+        "illuminate/support": "^5.7@dev"
+    }
+}
