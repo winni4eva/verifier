@@ -1,0 +1,32 @@
+dist: trusty
+sudo: false
+language: php
+
+cache:
+  directory:
+    - $HOME/.composer/cache
+
+php:
+  - 7.1
+  - 7.2
+  - nightly
+
+before_install:
+  - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
+  - travis_retry composer self-update
+
+install: travis_retry composer update --prefer-dist -n
+
+script:
+  - vendor/bin/phpunit
+
+jobs:
+  include:
+    - stage: Code Quality
+      env: CODING_STANDARDS
+      php: 7.1
+      script:
+        - ./vendor/bin/phpcs
+
+  allowed_failures:
+    - php: nightly
