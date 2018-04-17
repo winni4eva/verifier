@@ -1,4 +1,7 @@
-<?php require __DIR__ . '/vendor/autoload.php'; ?>
+<?php 
+require __DIR__ . '/vendor/autoload.php'; 
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -307,7 +310,6 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        session_start();
                                         if(isset($_SESSION['responses'])){
                                             $items = collect($_SESSION['responses']['ValidIds'])->map(function($item, $key){
                                                     return $item;
@@ -349,7 +351,6 @@
                                 </thead>
                                 <tbody>
                                     <?php 
-                                    session_start();
                                     if(isset($_SESSION['responses'])){
                                         $items = collect($_SESSION['responses']['InvalidIds'])->map(function($item, $key){
                                             return $item;
